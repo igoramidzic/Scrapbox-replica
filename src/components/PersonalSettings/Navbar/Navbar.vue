@@ -3,24 +3,19 @@
     <div class="container-fluid">
       <div class="row">
         <!-- Logo -->
-        <div class="nav-section nav-section-logo col-md-3 col-sm-4 col-xs-8">
+        <div class="nav-section nav-section-logo col-xs-6">
           <div class="holder">
-            <a class="logo-link" href="#">
-              <div class="nav-link-holder">
-                <img class="nav-logo" src="src/public/img/logo.png" alt="">
-                <span class="app-name">Scrapbox</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <!-- Search box -->
-        <div class="nav-section nav-section-search col-md-6 col-sm-4 hidden-xs">
-          <div class="holder">
-            <input class="nav-search-box" type="text">
+            <router-link :to="{ name: 'home' }">
+              <a class="logo-link" href="#">
+                <div class="nav-link-holder">
+                  <span class="app-name">Scrapbox</span>
+                </div>
+              </a>
+            </router-link>
           </div>
         </div>
         <!-- Menu -->
-        <div class="nav-section nav-section-menu col-md-3 col-sm-4 col-xs-4">
+        <div class="nav-section nav-section-menu col-xs-6">
           <app-menu class="holder"></app-menu>
         </div>
       </div>
@@ -37,7 +32,7 @@ export default {
   },
   data: () => {
     return {
-
+      
     }
   }
 }
@@ -45,7 +40,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import 'src/public/sass/_variables.sass'
+@import 'public/sass/_variables.sass'
 
 .main-navbar
   background-color: $primary-color2
@@ -73,25 +68,11 @@ export default {
               height: 40px
             .app-name
               color: #fff
-              margin-left: 10px
               font-size: 20px
               position: relative
-              top: 3px
           &:hover
             .app-name
               color: rgb(228, 228, 228)
-      .nav-section-search
-        .nav-search-box
-          height: 34px
-          border: none
-          width: 100%
-          border-radius: 4px
-          padding: 0px 5px 0px 10px
-          outline: none
-          color: $primary-text-color
-          background-color: rgba(255, 255, 255, 0.2)
-          &:focus
-            background-color: #fff
       .nav-section-menu
         text-align: right
         .holder

@@ -11,17 +11,17 @@
         <li><a class="nav-link nav-item" href="#">Create new project +</a></li>
         <li class="divider"></li>
         <li class="section-header nav-item">Igor Amidzic's project</li>
-        <li><a class="nav-link nav-item" href="#">Members (1)</a></li>
-        <li><a class="nav-link nav-item" href="#">Settings</a></li>
-        <li><a class="nav-link nav-item" href="#">Theme</a></li>
-        <li><a class="nav-link nav-item" href="#">Notifications</a></li>
+        <router-link :to="{ name: 'settingsMembers', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Members (1)</a></router-link>
+        <router-link :to="{ name: 'settingsBasic', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Settings</a></router-link>
+        <router-link :to="{ name: 'settingsTheme', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Theme</a></router-link>
+        <router-link :to="{ name: 'settingsNotifications', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Notifications</a></router-link>
         <li class="divider"></li>
         <li class="section-header nav-item">Style</li>
         <li><a class="nav-link emphasis nav-item" href="#">Grid</a></li>
         <li><a class="nav-link nav-item" href="#">List</a></li>
         <li class="divider"></li>
         <li class="section-header nav-item">Igor Amidzic</li>
-        <li><a class="nav-link nav-item green-bar" href="#">Edit profile</a></li>
+        <router-link :to="{ name: 'settingsProfile' }" tag="li"><a class="nav-link nav-item green-bar">Edit profile</a></router-link>
         <li><a class="nav-link nav-item" href="#">Log out</a></li>
         <li class="divider"></li>
         <li><a class="nav-link nav-item" href="#">About Scrapbox</a></li>
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside'
+
 export default {
   data: () => {
     return {
@@ -45,7 +47,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import 'src/public/sass/_variables.sass'
+@import 'public/sass/_variables.sass'
 
 .menu
   .nav-menu-btn
@@ -56,8 +58,8 @@ export default {
     padding: 0px 15px
     .fa-bars
       margin-left: 10px
-  &:hover
-    color: rgb(228, 228, 228)
+    &:hover
+      color: rgb(228, 228, 228)
   .active
     background-color: #2e323b
   .nav-menu-dropdown

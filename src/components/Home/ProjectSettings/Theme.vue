@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
-    <router-view name="navbar"></router-view>
-    <router-view></router-view>
+  <div>
+    THEME
   </div>
 </template>
 
 <script>
 export default {
+
 }
 </script>
 
