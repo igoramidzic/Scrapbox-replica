@@ -32,7 +32,7 @@ export default {
   },
   data: () => {
     return {
-      
+
     }
   }
 }
@@ -49,6 +49,7 @@ export default {
   border: none
   margin: 0
   height: 50px
+  margin-bottom: 30px
   .container-fluid
     height: 100%
     .row

@@ -7,26 +7,37 @@
     <!-- Menu list -->
     <div class="nav-menu-dropdown" v-if="menuBinary">
       <ul class="list">
-        <li><a class="nav-link emphasis nav-item" href="#">Igor Amidzic's project</a></li>
+        <!-- Project list -->
+        <router-link tag="li"
+                      v-for="project in projects" :key="project.id"
+                      :to="{ name: 'home', params: { project: project.name } }">
+                      <a class="nav-link nav-item" :class="{ 'emphasis': project.name == $route.params.project}">{{ project.name }}</a>
+        </router-link>
+        <!-- Create new project -->
         <li><a class="nav-link nav-item" href="#">Create new project +</a></li>
         <li class="divider"></li>
+        <!-- Project settings -->
         <li class="section-header nav-item">Igor Amidzic's project</li>
         <router-link :to="{ name: 'settingsMembers', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Members (1)</a></router-link>
         <router-link :to="{ name: 'settingsBasic', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Settings</a></router-link>
         <router-link :to="{ name: 'settingsTheme', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Theme</a></router-link>
         <router-link :to="{ name: 'settingsNotifications', params: { project: 'igoramidzic' } }" tag="li"><a class="nav-link nav-item">Notifications</a></router-link>
         <li class="divider"></li>
+        <!-- Page style -->
         <li class="section-header nav-item">Style</li>
         <li><a class="nav-link emphasis nav-item" href="#">Grid</a></li>
         <li><a class="nav-link nav-item" href="#">List</a></li>
         <li class="divider"></li>
+        <!-- User settings -->
         <li class="section-header nav-item">Igor Amidzic</li>
         <router-link :to="{ name: 'settingsProfile' }" tag="li"><a class="nav-link nav-item green-bar">Edit profile</a></router-link>
         <li><a class="nav-link nav-item" href="#">Log out</a></li>
         <li class="divider"></li>
+        <!-- About Scrapbox -->
         <li><a class="nav-link nav-item" href="#">About Scrapbox</a></li>
         <li><a class="nav-link nav-item" href="#">Help</a></li>
         <li class="divider"></li>
+        <!-- Watch list -->
         <li class="section-header nav-item">Watch List</li>
         <li><a class="nav-link nav-item" href="#">Scrapbox Help</a></li>
       </ul>
@@ -40,7 +51,19 @@ import ClickOutside from 'vue-click-outside'
 export default {
   data: () => {
     return {
-      menuBinary: false
+      // Menu toggle
+      menuBinary: false,
+      // This will be abstracted to main App.vue fine and imported via props
+      projects: [
+        { id: 1, name: 'IgorAmidzic-1' },
+        { id: 2, name: 'IgorAmidzic-2' }
+      ],
+      activeProject: null
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      this.activeProject = this.$route.params.project
     }
   }
 }
@@ -66,6 +89,7 @@ export default {
     background-color: white
     color: $primary-text-color
     position: absolute
+    z-index: 9999
     right: 0
     width: 300px
     border-radius: 4px

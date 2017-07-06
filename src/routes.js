@@ -15,13 +15,15 @@ import Extensions from './components/PersonalSettings/Settings/Extensions.vue'
 
 export const routes = [
   {
-    path: '', name: 'home', components: {
+    path: '', redirect: { name: 'home', params: { project: 'IgorAmidzic-1' } }, components: {
       'navbar': Navbar1,
       default: Home
-    }
+    }, children: [
+      { path: ':project', name: 'home', component: Home }
+    ]
   },
   {
-    path: '/new', name: 'newPage', components: {
+    path: '/:project/new', name: 'newPage', components: {
       'navbar': Navbar1,
       default: NewPage
     }
