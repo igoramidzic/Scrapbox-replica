@@ -36,14 +36,8 @@ import Menu from './Menu.vue'
 export default {
   components: {
     appMenu: Menu
-  },
-  data: () => {
-    return {
-
-    }
   }
 }
-
 </script>
 
 <style lang="sass" scoped>

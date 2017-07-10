@@ -9,7 +9,7 @@
       <ul class="list">
         <!-- Project list -->
         <router-link tag="li"
-                      v-for="project in projects" :key="project.id"
+                      v-for="project in projectList" :key="project.id"
                       :to="{ name: 'home', params: { project: project.name } }">
                       <a class="nav-link nav-item" :class="{ 'emphasis': project.name == $route.params.project}">{{ project.name }}</a>
         </router-link>
@@ -52,18 +52,12 @@ export default {
   data: () => {
     return {
       // Menu toggle
-      menuBinary: false,
-      // This will be abstracted to main App.vue fine and imported via props
-      projects: [
-        { id: 1, name: 'IgorAmidzic-1' },
-        { id: 2, name: 'IgorAmidzic-2' }
-      ],
-      activeProject: null
+      menuBinary: false
     }
   },
-  watch: {
-    '$route' (to, from) {
-      this.activeProject = this.$route.params.project
+  computed: {
+    projectList () {
+      return this.$store.state.projects.projectList
     }
   }
 }
